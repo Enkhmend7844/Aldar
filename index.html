@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For my friend, Aldar(˵ •̀ ᴗ - ˵ ) </title>
+  <!-- Cute font from Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(145deg, #e1f0fa 0%, #c9e2f5 100%);
+      font-family: 'Quicksand', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 3rem;
+      color: #1e3b5c;
+      text-shadow: 3px 3px 0 #aac7e0;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+      transform: rotate(-1deg);
+    }
+
+    /* ----- ENVELOPE ----- */
+    .envelope-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 3rem 0 2.5rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .envelope-wrapper:active {
+      transform: scale(0.98);
+    }
+
+    .envelope {
+      position: relative;
+      width: 340px;
+      height: 260px;
+      background: #bbd2e8;
+      border-radius: 12px 12px 8px 8px;
+      box-shadow: 0 15px 20px rgba(37, 79, 110, 0.2), 0 4px 10px rgba(0,0,0,0.1);
+      border: 6px solid #2d4b6e;
+    }
+
+    .envelope::before {
+      content: '';
+      position: absolute;
+      top: -45px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 170px solid transparent;
+      border-right: 170px solid transparent;
+      border-bottom: 70px solid #8fb1d1;
+      filter: drop-shadow(0 -2px 3px rgba(54, 84, 112, 0.3));
+      z-index: 3;
+    }
+
+    .envelope::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 25px;
+      width: 90px;
+      height: 40px;
+      background: #c3dbf5;
+      border-radius: 30px 30px 0 0;
+      transform: rotate(-5deg);
+      box-shadow: 0 -2px 5px #678fb1;
+      z-index: 5;
+      opacity: 0.8;
+    }
+
+    .envelope-body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #d4e6fc;
+      border-radius: 8px;
+      border: 2px dashed #2d4b6e;
+      box-shadow: inset 0 2px 10px #aac3db;
+    }
+
+    .click-text {
+      font-family: 'Caveat', cursive;
+      font-size: 2.4rem;
+      color: #1e3a5a;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      box-shadow: 0 2px 8px #577e9c;
+      transform: rotate(-1deg);
+      transition: all 0.2s;
+    }
+
+    /* ----- LETTER PAPER (hidden initially) ----- */
+    .letter-paper {
+      background: #fffcf5;
+      max-width: 520px;
+      margin: 1rem auto 2.5rem;
+      padding: 2rem 2rem 2rem 2.5rem;
+      border-radius: 30px 15px 30px 15px;
+      box-shadow: 0 20px 30px rgba(40, 70, 100, 0.2),
+                  inset 0 0 0 2px #f0e7d6,
+                  inset 0 0 0 6px #faf3e9;
+      font-family: 'Caveat', cursive;
+      font-size: 1.6rem;
+      line-height: 1.5;
+      color: #2b3f4e;
+      text-align: left;
+      position: relative;
+      transform: rotate(0.3deg);
+      border: 2px solid #9bb7d4;
+    }
+
+    .letter-paper p {
+      margin: 0;
+      white-space: pre-line;
+    }
+
+    .letter-paper::before {
+      content: '✨';
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      font-size: 2.2rem;
+      opacity: 0.3;
+      transform: rotate(5deg);
+    }
+
+    .close-letter {
+      display: inline-block;
+      margin-top: 20px;
+      background: #bfd8f0;
+      border: none;
+      border-radius: 60px;
+      padding: 0.6rem 1.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #1e374f;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #4b6f8b;
+      transition: 0.07s linear;
+      font-family: 'Quicksand', sans-serif;
+      border: 2px solid #ffffff;
+    }
+
+    .close-letter:active {
+      transform: translateY(6px);
+      box-shadow: 0 0 0 #4b6f8b;
+    }
+
+    /* ----- MEMORIES GALLERY (always visible) ----- */
+    .memories-title {
+      font-family: 'Caveat', cursive;
+      font-size: 2.8rem;
+      color: #1e4b61;
+      margin: 2rem 0 1rem;
+      border-bottom: 4px dotted #6f9fc7;
+      display: inline-block;
+      padding-bottom: 0.2rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem 1.2rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .memory-card {
+      background: #ecf5fc;
+      border-radius: 35px 20px 35px 20px;
+      padding: 1.2rem 0.8rem 1.5rem;
+      box-shadow: 12px 12px 0 #aac3db, 0 8px 20px rgba(50, 80, 110, 0.3);
+      border: 3px solid white;
+      transition: transform 0.2s;
+    }
+
+    .memory-card:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 15px 15px 0 #8fb6d1, 0 12px 28px rgba(45, 75, 100, 0.4);
+    }
+
+    .memory-card img,
+    .memory-card video {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 25px 8px 25px 8px;
+      border: 4px solid white;
+      box-shadow: 0 5px 0 #7f9fc0;
+      background: #d3e3f0;
+    }
+
+    .memory-card video {
+      object-fit: cover;
+    }
+
+    .memory-desc {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1e3f58;
+      margin-top: 0.8rem;
+      background: #e1f0fd;
+      padding: 0.5rem 0.6rem;
+      border-radius: 40px;
+      border: 2px dashed #4e7a9e;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+ 
+
+    /* utility visibility */
+    .hidden {
+      display: none !important;
+    }
+
+    .footer-stars {
+      margin: 3rem 0 0.5rem;
+      font-size: 2rem;
+      letter-spacing: 6px;
+      opacity: 0.7;
+      color: #2a4d69;
+    }
+
+    /* responsive */
+    @media (max-width: 550px) {
+      h1 { font-size: 2.5rem; }
+      .envelope { width: 260px; height: 200px; }
+      .envelope::before { border-left: 130px solid transparent; border-right: 130px solid transparent; border-bottom: 50px solid #8fb1d1; top: -35px; }
+      .envelope::after { width: 70px; height: 30px; left: 15px; top: -2px; }
+      .click-text { font-size: 1.8rem; }
+      .letter-paper { font-size: 1.4rem; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>For my friend, Aldar ᕙ(  •̀ ᗜ •́  )ᕗ</h1>   <!-- change name as needed -->
+
+  <!-- ENVELOPE (click to open) -->
+  <div id="envelopeWrapper" class="envelope-wrapper" onclick="openLetter()">
+    <div class="envelope">
+      <div class="envelope-body">
+        <span class="click-text">📬 open me</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LETTER (hidden initially) -->
+  <div id="letterPaper" class="letter-paper hidden">
+    <p>
+      Dear Aldar,<br><br>
+      Please forgive me for the late birthday wish. Happy 21st birthday! Now I can finally make you buy me a beer haha.(just kidding)
+I’m really happy that I met you when we started university. I think you’re kind of a strange human being.<br><br>
+You are a very hardworking and amazing person. I hope you will always stay that way in the future. Even if we can’t meet often later in life, I hope you will still remain my friend. It would be nice if our families could become friends too.<br><br>
+I’m very grateful that I traveled to America with you. Maybe it’s also because I was lazy and trusted you with everything without worrying about anything haha. Please forgive me for the times I got angry or upset easily. I promise I won’t be like that this year. 🤞<br><br>
+I really like how dependable you are and how you always stay calm and gentle. Let’s make more memories together this year. We should go to New York and even try going to a bar (just to dance, not to drink haha).<br><br>
+And finally, you can achieve anything. (૭ ｡•̀ ᵕ •́｡ )૭ Don’t give up, and reach everything you wish for. Love you, my friend.<br><br>
+
+      <span style="font-family: Caveat; font-size:2rem;">— From pretty Emi</span>
+      <span style="font-family: Caveat; font-size:2rem;">— To my comic book addicted friend.</span>
+
+    </p>
+    <button class="close-letter" onclick="closeLetter()">✉️ back to envelope</button>
+  </div>
+
+  <div class="memories-title">📸 Our memories</div>
+  <div class="gallery">
+    <!-- photo 1 -->
+    <div class="memory-card">
+      <img src="1.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">February 21, 2024. Янзын үсний засалттай байжээ.💇🏻‍♂️</div>
+    </div>
+    <!-- photo 2 -->
+    <div class="memory-card">
+      <img src="2.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">December 10, 2024. Үнсгэлжин шиг л хөөрхөн.</div>
+    </div>
+    <!-- video 1 -->
+    <div class="memory-card">
+      <video controls poster="1.mp4">
+        <source src="1.mp4" type="video/mp4">
+      </video>
+      <div class="memory-desc">July 21, 2025. Bon Appétit🍕</div>
+    </div>
+    <!-- photo 3 -->
+    <div class="memory-card">
+      <img src="3.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Эрхэмсэг гэж жигтэйхэн.🌸</div>
+    </div>
+    <!-- photo 4 -->
+    <div class="memory-card">
+      <img src="4.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">May 27, 2025. Ийнхүү Америкийн зүг.🌎</div>
+    </div>
+      <!-- photo 5 -->
+    <div class="memory-card">
+      <img src="5.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Онгоцонд бас зургаа даруулчихжээ.✈️</div>
+    </div>
+    <!-- video 2 -->
+    <div class="memory-card">
+      <video controls poster="2.mp4">
+        <source src="2.mp4" type="video/mp4">
+      </video>
+      <div class="memory-desc">Fourht of July, So nostalgic(╥‸╥)</div>
+    </div>
+    <!-- photo 6 -->
+    <div class="memory-card">
+      <img src="6.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Arrived in Turkey.🕌</div>
+    </div>
+    <!-- photo 7 -->
+    <div class="memory-card">
+      <img src="7.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">(˶ᵔ ᵕ ᵔ˶) ‹𝟹</div>
+    </div>
+    <!-- photo 8 -->
+    <div class="memory-card">
+      <img src="8.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Cats are everywhere. ฅ^>⩊<^ ฅ</div>
+    </div>
+    <!-- video 3 -->
+    <div class="memory-card">
+      <video controls poster="3.mp4">
+        <source src="3.mp4" type="video/mp4">
+      </video>
+      <div class="memory-desc">July 2, 2025. Sunset🌅</div>
+    </div>
+    <!-- photo 9 -->
+    <div class="memory-card">
+      <img src="9.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">✌</div>
+    </div>
+    <!-- photo 10 -->
+    <div class="memory-card">
+      <img src="10.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">May 28. Анх удаа метрогоор явав.</div>
+    </div>
+    <!-- photo 11 -->
+    <div class="memory-card">
+      <img src="11.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Walked around Chicago.</div>
+    </div>
+    <!-- photo 12 -->
+    <div class="memory-card">
+      <img src="12.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Shrek🟢</div>
+    </div>
+    <!-- photo 13 -->
+    <div class="memory-card">
+      <img src="13.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Harry potaaaa.</div>
+    </div>
+    <!-- photo 14 -->
+    <div class="memory-card">
+      <img src="14.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Минийх черритэй нь гарсан шүү🍒 Би ч азтай л даа.</div>
+    </div>
+    <!-- photo 15 -->
+    <div class="memory-card">
+      <img src="15.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Chicago’s view through the window.</div>
+    </div>
+    <!-- photo 16 -->
+    <div class="memory-card">
+      <img src="16.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">May 29, Chicago Union Station. Going to Wisconsin.</div>
+    </div>
+    <!-- photo 17 -->
+    <div class="memory-card">
+      <img src="17.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Do you remember this duck? 🦆</div>
+    </div>
+    <!-- photo 18 -->
+    <div class="memory-card">
+      <img src="18.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Milwuakeeeeee</div>
+    </div>
+    <!-- photo 19 -->
+    <div class="memory-card">
+      <img src="19.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Went to the Subway🥖</div>
+    </div>
+    <!-- video 4 -->
+    <div class="memory-card">
+      <video controls poster="4.mp4">
+        <source src="4.mp4" type="video/mp4">
+      </video>
+      <div class="memory-desc">July 2, Madison</div>
+    </div>
+    <!-- photo 20 -->
+    <div class="memory-card">
+      <img src="20.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">May 29, Milwuakee Downtown</div>
+    </div>
+    <!-- photo 21 -->
+    <div class="memory-card">
+      <img src="21.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">May 29, Buutiful place</div>
+    </div>
+    <!-- photo 22 -->
+    <div class="memory-card">
+      <img src="22.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Donut,🍩</div>
+    </div>
+    <!-- photo 23 -->
+    <div class="memory-card">
+      <img src="23.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">I really liked this one.</div>
+    </div>
+    <!-- photo 24 -->
+    <div class="memory-card">
+      <img src="24.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">May 31, Child's bike wahahah.🚲</div>
+    </div>
+    <!-- photo 25 -->
+    <div class="memory-card">
+      <img src="25.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Taco Bell actually, it didn’t taste good.</div>
+    </div>
+    <!-- photo 26 -->
+    <div class="memory-card">
+      <img src="26.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">June 6, Hangout together.</div>
+    </div>
+    <!-- photo 27 -->
+    <div class="memory-card">
+      <img src="27.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">June 6, Awful day, I fell off my bike.🤕</div>
+    </div>
+    <!-- photo 28 -->
+    <div class="memory-card">
+      <img src="28.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Энэ картуудаа сайн цуглуулсан биз?</div>
+    </div>
+    <!-- photo 29 -->
+    <div class="memory-card">
+      <img src="29.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Дээшээ шатаар гараад бас нэг автобусанд хөргөө татуулав.</div>
+    </div>
+    <!-- photo 30 -->
+    <div class="memory-card">
+      <img src="30.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Би хөөрхөн инээчихэж.😉</div>
+    </div>
+    <!-- photo 31 -->
+    <div class="memory-card">
+      <img src="31.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Double decker bus.🚌</div>
+    </div>
+    <!-- photo 32 -->
+    <div class="memory-card">
+      <img src="32.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">June 6, яасан гоё том бөгстэйнбээ🍑</div>
+    </div>
+    <!-- video 5 -->
+    <div class="memory-card">
+      <video controls poster="5.mp4">
+        <source src="5.mp4" type="video/mp4">
+      </video>
+      <div class="memory-desc">July 2, Old market place. Мөрөөдлийн байшингуудаар дүүрэн.</div>
+    </div>
+    <!-- photo 33 -->
+    <div class="memory-card">
+      <img src="33.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">June 11, Үргэлж л Алдараасаа идэх юм авдаг байж дээ. Энэ гэхдээ жаахан сонин амттай.</div>
+    </div>
+    <!-- photo 34 -->
+    <div class="memory-card">
+      <img src="34.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">June 12, аая царайлаг юм аа.🎀</div>
+    </div>
+    <!-- photo 35 -->
+    <div class="memory-card">
+      <img src="35.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Инээгээрэй хүмүүсээ, инээгээрэй.(˶ᵔ ᵕ ᵔ˶)</div>
+    </div>
+    <!-- photo 36 -->
+    <div class="memory-card">
+      <img src="36.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Obsessed with this ice cream.🍨</div>
+    </div>
+    <!-- photo 37 -->
+    <div class="memory-card">
+      <img src="37.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">June 13, Had an online meeting with Garid.</div>
+    </div>
+    <!-- photo 38 -->
+    <div class="memory-card">
+      <img src="38.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Гарьдаад зүрх сэтгэлээ илчилж буй Алдар.❤️</div>
+    </div>
+    <!-- photo 39 -->
+    <div class="memory-card">
+      <img src="39.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Энэ цаасанд үзэгний ганц ч мөр үлдээгээгүй байдаг юм.</div>
+    </div>
+    <!-- photo 40 -->
+    <div class="memory-card">
+      <img src="40.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Гарьдааг цэрэгт нь үдэж өгч буй бид.</div>
+    </div>
+    <!-- photo 41 -->
+    <div class="memory-card">
+      <img src="41.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Энэ ундаа ч бас л гоё шүү тиймэээ🧃</div>
+    </div>
+    <!-- photo 42 -->
+    <div class="memory-card">
+      <img src="42.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Миний зураг дарах мэдрэмж бүүр perfecto юм аа.</div>
+    </div>
+    <!-- photo 43 -->
+    <div class="memory-card">
+      <img src="43.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Инээгээрэй хүмүүсээ инээгээрэй.</div>
+    </div>
+    <!-- photo 44 -->
+    <div class="memory-card">
+      <img src="44.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">July 2, Madison дахь аялалаа дурсахуй.</div>
+    </div>
+    <!-- photo 45 -->
+    <div class="memory-card">
+      <img src="45.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">June 13, танай байр аймшигтай их шавжтай.</div>
+    </div>
+    <!-- video 6 -->
+    <div class="memory-card">
+      <video controls poster="6.mp4">
+        <source src="6.mp4" type="video/mp4">
+      </video>
+      <div class="memory-desc">May 28, Чикаго дахь дурсамжит өдрөө санахуй.</div>
+    </div>
+    <!-- photo 46 -->
+    <div class="memory-card">
+      <img src="46.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">July 2, Period Garden Park, үзэсгэлэнтэй л газар байна билээ.🌳</div>
+    </div>
+    <!-- photo 47 -->
+    <div class="memory-card">
+      <img src="47.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Юу харчихаад ч инээцгээж байгаа юм бүү мэд.🤷🏻‍♀️</div>
+    </div>
+    <!-- photo 48 -->
+    <div class="memory-card">
+      <img src="48.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Бид хоёрын selfie ч дуусашгүй нь.</div>
+    </div>
+    <!-- photo 49 -->
+    <div class="memory-card">
+      <img src="49.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Нар бидний хацрыг үнсэж үлгээд л.</div>
+    </div>
+    <!-- photo 50 -->
+    <div class="memory-card">
+      <img src="50.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Хөөрхөн2</div>
+    </div>    
+    <!-- video 7 -->
+    <div class="memory-card">
+      <video controls poster="7.mp4">
+        <source src="7.mp4" type="video/mp4">
+      </video>
+      <div class="memory-desc">May 27, Ганц зайрмаг авах гэж бөөн юм болсон доо.🍦</div>
+    </div>
+    <!-- photo 51 -->
+    <div class="memory-card">
+      <img src="51.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Хөөрхөн хүмүүсийн зураг.</div>
+    </div>  
+    <!-- photo 52 -->
+    <div class="memory-card">
+      <img src="52.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">July 2, хорвоогийн нэг өдөр ийнхүү өндөрлөв.</div>
+    </div>  
+    <!-- photo 53 -->
+    <div class="memory-card">
+      <img src="53.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Kuly 4, Күэ нээрэн муухан хосуудаас дээр романтик газруудаар явсан байдаг юм.</div>
+    </div>  
+    <!-- photo 54 -->
+    <div class="memory-card">
+      <img src="54.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Би яасан ч хөөрхөн юм. Үзэсгэлэн гоо юм аа нээрэн.</div>
+    </div>  
+    <!-- photo 55 -->
+    <div class="memory-card">
+      <img src="55.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Aldar's face with light.</div>
+    </div>  
+    <!-- photo 56 -->
+    <div class="memory-card">
+      <img src="56.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Aldar's face without light.</div>
+    </div>  
+    <!-- photo 57 -->
+    <div class="memory-card">
+      <img src="57.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Үнэхээээээр амттай.😋</div>
+    </div>  
+    <!-- photo 58 -->
+    <div class="memory-card">
+      <img src="58.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Another selfie.</div>
+    </div>  
+    <!-- photo 59 -->
+    <div class="memory-card">
+      <img src="59.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Маягтай хоёр гар вэ.</div>
+    </div>  
+    <!-- photo 60 -->
+    <div class="memory-card">
+      <img src="60.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">July 5, Хөөрхий дугуй хагардаг өдөр чамайг зовоогоод аягүү хол алхуулж билээ.</div>
+    </div>  
+    <!-- photo 61 -->
+    <div class="memory-card">
+      <img src="61.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">July 12, Наадмын идэлт, хуушуур хийх гэж үйлээ үзэцгээсэн дээ.</div>
+    </div>  
+    <!-- photo 62 -->
+    <div class="memory-card">
+      <img src="62.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Энэ зураг хэнд нь байдаг юм бол доо. Нэг мэдсэн л алга болчихсон.</div>
+    </div>  
+    <!-- photo 63 -->
+    <div class="memory-card">
+      <img src="63.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">July 16, Fat Bob, Анд нөхөр минь нэгдүгээр байр эзлэв.</div>
+    </div>  
+    <!-- photo 64 -->
+    <div class="memory-card">
+      <img src="64.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">July 25, Barabooooo</div>
+    </div>  
+    <!-- photo 65 -->
+    <div class="memory-card">
+      <img src="65.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">I hope Jina sold this boot for a good price hahaha.</div>
+    </div>  
+    <!-- video 8 -->
+    <div class="memory-card">
+      <video controls poster="8.mp4">
+        <source src="8.mp4" type="video/mp4">
+      </video>
+      <div class="memory-desc">May 27, Аз жаргалтай эхэлж буй аялал.</div>
+    </div>
+    <!-- photo 66 -->
+    <div class="memory-card">
+      <img src="66.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">August 8, шал сонин тоглоом</div>
+    </div>  
+    <!-- photo 67 -->
+    <div class="memory-card">
+      <img src="67.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Дандаа уурладаг байсныг өршөөж ажаамуй.</div>
+    </div>  
+    <!-- photo 68 -->
+    <div class="memory-card">
+      <img src="68.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Энийг ч залхатлаа харсан даа.</div>
+    </div>  
+    <!-- photo 69 -->
+    <div class="memory-card">
+      <img src="69.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Mt.Olympus is everywhere.</div>
+    </div>  
+    <!-- photo 70 -->
+    <div class="memory-card">
+      <img src="70.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">September 6, Буцахдаа туркээс нэхэн байж smoothie авхуулж билээ.</div>
+    </div>  
+    <!-- photo 71 -->
+    <div class="memory-card">
+      <img src="71.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">Сайхан нутаг минь.🐎🏹🤼</div>
+    </div>  
+    <!-- photo 72 -->
+    <div class="memory-card">
+      <img src="72.jpg" alt="memory" loading="lazy">
+      <div class="memory-desc">September 24, Won this ungly thing.</div>
+    </div>  
+  </div>
+  <div class="footer-stars">ᕙ(⇀‸↼‶)ᕗ</div>
+</div>
+
+<script>
+  function openLetter() {
+    document.getElementById('envelopeWrapper').classList.add('hidden');
+    document.getElementById('letterPaper').classList.remove('hidden');
+  }
+
+  function closeLetter() {
+    document.getElementById('letterPaper').classList.add('hidden');
+    document.getElementById('envelopeWrapper').classList.remove('hidden');
+  }
+</script>
+
+</body>
+</html>
